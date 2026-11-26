@@ -1,0 +1,11 @@
+body {
+    background: linear-gradient(rgb(116,0,184),rgb(255,45,115),rgb(216, 141, 80));
+    background-repeat: no-repeat;
+    background-attachment: fixed
+}
+#scritta{
+  position: absolute;
+ -webkit-text-stroke: 2px rgb(255, 255, 255); 
+  font-size: 100px;
+  text-align: center;
+}

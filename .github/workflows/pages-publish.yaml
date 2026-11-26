@@ -1,29 +1,23 @@
-name: Deploy to GitHub Pages
+#coppie chiave-valore
 
-on:
+on: #gira la pipeline quando pushi sul master
   push:
-    branches: [main]
+    branches: [master]
 
 permissions:
-  contents: read
+  contents: read #il workflow può leggere la repo
   pages: write
   id-token: write
 
 jobs:
-  deploy:
+  deploy: #Github crea la VM, clona la repo e crea il sito
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      
+uses: actions/checkout@v4
+uses: actions/upload-pages-artifact@v4
+    with:
+      path: .
+uses: actions/deploy-pages@v4

@@ -1,21 +1,30 @@
-on: #eseguita quando pusha su master
+name: Deploy to GitHub Pages
+
+on:
   push:
     branches: [main]
 
 permissions:
-  contents: read  #workflows autorizzato a leggere i contenuti
+  contents: read
   pages: write
   id-token: write
-
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/upload-pages-artifact@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
+          # Modifica './dist' con la cartella corretta del tuo progetto se necessario (es. '.' se i file sono nella root)
           path: .
-      - uses: actions/deploy-pages@v4
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

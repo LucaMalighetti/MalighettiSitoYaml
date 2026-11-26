@@ -22,7 +22,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Modifica './dist' con la cartella corretta del tuo progetto se necessario (es. '.' se i file sono nella root)
           path: .
 
       - name: Deploy to GitHub Pages

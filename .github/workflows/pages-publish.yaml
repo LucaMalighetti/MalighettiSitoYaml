@@ -1,23 +1,22 @@
-#coppie chiave-valore
 
-on: #gira la pipeline quando pushi sul master
+
+on:
   push:
-    branches: [master]
+    branches: [main]
 
 permissions:
-  contents: read #il workflow può leggere la repo
+  contents: read 
   pages: write
   id-token: write
 
 jobs:
-  deploy: #Github crea la VM, clona la repo e crea il sito
+  deploy: 
     runs-on: ubuntu-latest
     environment:
       name: github-pages
     steps:
-      
-uses: actions/checkout@v4
-uses: actions/upload-pages-artifact@v4
-    with:
-      path: .
-uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v4
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - uses: actions/deploy-pages@v4

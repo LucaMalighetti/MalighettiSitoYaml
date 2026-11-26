@@ -2,7 +2,7 @@ on: #eseguita quando pusha su master
   push:
     branches: [master]
 
-permissoins:
+permissions:
   contents: read  #workflows autorizzato a leggere i contenuti
   pages: write
   id-token: write

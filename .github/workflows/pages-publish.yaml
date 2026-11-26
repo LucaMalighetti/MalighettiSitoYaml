@@ -1,6 +1,6 @@
 on: #eseguita quando pusha su master
   push:
-    branches: [master]
+    branches: [main]
 
 permissions:
   contents: read  #workflows autorizzato a leggere i contenuti

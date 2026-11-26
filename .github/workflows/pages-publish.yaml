@@ -1,24 +1,21 @@
-#coppie chiave-valore
-
-on: #gira la pipeline quando pushi sul master
+on: #eseguita quando pusha su master
   push:
     branches: [master]
 
-permissions:
-  contents: read #il workflow può leggere la repo
+permissons:
+  contents: read  #workflows autorizzato a leggere i contenuti
   pages: write
   id-token: write
 
+
 jobs:
-  deploy: #Github crea la VM, clona la repo e crea il sito
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - uses: actions/deploy-pages@v3
-
-#Github -> Settings -> Pages -> Branch (da None a master)
+      - uses: actions/deploy-pages@v4
